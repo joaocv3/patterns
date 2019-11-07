@@ -1,10 +1,12 @@
 package proj.arq.model;
 
-public class CarrinhoMestre {
+public class CarrinhoMestre extends Observable {
 
     private static CarrinhoMestre uniqueInstance;
+    private List<Produto> produtos;
 
     private CarrinhoMestre() {
+        produtos = new ArrayList();
     }
 
     public static synchronized CarrinhoMestre getInstance() {
@@ -13,5 +15,9 @@ public class CarrinhoMestre {
         }
 
         return uniqueInstance;
+    }
+
+    public static void comprar(Carrinho carrinho) {
+        produtos.addAll(carrinho.getProdutos())
     }
 }
